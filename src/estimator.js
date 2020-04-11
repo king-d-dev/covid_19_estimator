@@ -20,7 +20,10 @@ const impactEstimator = (data) => {
     currentlyInfected
   );
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-  const hospitalBedsByRequestedTime = '';
+
+  const availableBeds = 0.35 * data.totalHospitalBeds;
+  const hospitalBedsByRequestedTime =
+    availableBeds - severeCasesByRequestedTime;
 
   return {
     currentlyInfected,
@@ -37,7 +40,10 @@ const severeImpactEstimator = (data) => {
     currentlyInfected
   );
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-  const hospitalBedsByRequestedTime = '';
+
+  const availableBeds = 0.35 * data.totalHospitalBeds;
+  const hospitalBedsByRequestedTime =
+    availableBeds - severeCasesByRequestedTime;
 
   return {
     currentlyInfected,
