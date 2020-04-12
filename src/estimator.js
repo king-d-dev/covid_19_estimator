@@ -75,7 +75,7 @@ const severeImpactEstimator = (data) => {
 
   // challenge 3
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
-  const casesForVentilatorsByRequestedTime = Math.truc(
+  const casesForVentilatorsByRequestedTime = Math.trunc(
     0.02 * infectionsByRequestedTime
   );
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
