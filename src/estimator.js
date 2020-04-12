@@ -11,25 +11,29 @@ function calculateInfectionsByRequestedTime(data, currentlyInfected) {
 }
 
 const impactEstimator = (data) => {
+  // challenge 1
   const currentlyInfected = data.reportedCases * 10;
-
   const infectionsByRequestedTime = calculateInfectionsByRequestedTime(
     data,
     currentlyInfected
   );
 
+  // challenge 2
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-
   const availableBeds = 0.35 * data.totalHospitalBeds;
-  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = parseInt(
+    availableBeds - severeCasesByRequestedTime
+  );
 
+  // challenge 3
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight = (infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD)
-    / data.timeToElapse;
+  let dollarsInFlight =
+    (infectionsByRequestedTime *
+      avgDailyIncomePopulation *
+      avgDailyIncomeInUSD) /
+    data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
@@ -45,25 +49,29 @@ const impactEstimator = (data) => {
 };
 
 const severeImpactEstimator = (data) => {
+  // challenge 1
   const currentlyInfected = data.reportedCases * 50;
-
   const infectionsByRequestedTime = calculateInfectionsByRequestedTime(
     data,
     currentlyInfected
   );
 
+  // challenge 2
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
-
   const availableBeds = 0.35 * data.totalHospitalBeds;
-  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = parseInt(
+    availableBeds - severeCasesByRequestedTime
+  );
 
+  // challenge 3
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight = (infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD)
-    / data.timeToElapse;
+  let dollarsInFlight =
+    (infectionsByRequestedTime *
+      avgDailyIncomePopulation *
+      avgDailyIncomeInUSD) /
+    data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
