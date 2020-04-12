@@ -35,11 +35,10 @@ const impactEstimator = (data) => {
     0.02 * infectionsByRequestedTime
   );
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight =
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-    data.timeToElapse;
+  let dollarsInFlight = (infectionsByRequestedTime
+      * avgDailyIncomePopulation
+      * avgDailyIncomeInUSD)
+    / data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
@@ -79,11 +78,10 @@ const severeImpactEstimator = (data) => {
     0.02 * infectionsByRequestedTime
   );
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight =
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-    data.timeToElapse;
+  let dollarsInFlight = (infectionsByRequestedTime
+      * avgDailyIncomePopulation
+      * avgDailyIncomeInUSD)
+    / data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
