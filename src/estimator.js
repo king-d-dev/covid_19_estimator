@@ -1,6 +1,6 @@
 const normaliseDuration = (data) => {
   if (data.periodType === 'weeks') return 7 * data.timeToElapse;
-  else if (data.periodType === 'months') return 30 * data.timeToElapse;
+  if (data.periodType === 'months') return 30 * data.timeToElapse;
 
   return data.timeToElapse;
 };
@@ -21,18 +21,17 @@ const impactEstimator = (data) => {
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
   const availableBeds = 0.35 * data.totalHospitalBeds;
-  const hospitalBedsByRequestedTime =
-    availableBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
 
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  const dollarsInFlight = parseInt(
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-      data.timeToElapse
-  );
+  let dollarsInFlight = (infectionsByRequestedTime
+      * avgDailyIncomePopulation
+      * avgDailyIncomeInUSD)
+    / data.timeToElapse;
+
+  dollarsInFlight = parseInt(dollarsInFlight, 10);
 
   return {
     currentlyInfected,
@@ -56,18 +55,17 @@ const severeImpactEstimator = (data) => {
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
 
   const availableBeds = 0.35 * data.totalHospitalBeds;
-  const hospitalBedsByRequestedTime =
-    availableBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = availableBeds - severeCasesByRequestedTime;
 
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  const dollarsInFlight = parseInt(
-    (infectionsByRequestedTime *
-      avgDailyIncomePopulation *
-      avgDailyIncomeInUSD) /
-      data.timeToElapse
-  );
+  let dollarsInFlight = (infectionsByRequestedTime
+      * avgDailyIncomePopulation
+      * avgDailyIncomeInUSD)
+    / data.timeToElapse;
+
+  dollarsInFlight = parseInt(dollarsInFlight, 10);
 
   return {
     currentlyInfected,
