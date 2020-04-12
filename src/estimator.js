@@ -19,7 +19,7 @@ const impactEstimator = (data) => {
   );
 
   // challenge 2
-  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+  const severeCasesByRequestedTime = parseInt(0.15 * infectionsByRequestedTime);
   const availableBeds = 0.35 * data.totalHospitalBeds;
   const hospitalBedsByRequestedTime = parseInt(
     availableBeds - severeCasesByRequestedTime
@@ -57,10 +57,14 @@ const severeImpactEstimator = (data) => {
   );
 
   // challenge 2
-  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+  const severeCasesByRequestedTime = parseInt(
+    0.15 * infectionsByRequestedTime,
+    10
+  );
   const availableBeds = 0.35 * data.totalHospitalBeds;
   const hospitalBedsByRequestedTime = parseInt(
-    availableBeds - severeCasesByRequestedTime
+    availableBeds - severeCasesByRequestedTime,
+    10
   );
 
   // challenge 3
