@@ -1,9 +1,13 @@
 const fs = require('fs');
 const express = require('express');
-const xml = require('xml');
+const EasyXml = require('easyxml');
 
 const router = express.Router();
 const covid19ImpactEstimator = require('../src/estimator');
+
+const serializer = new EasyXml({
+  manifest: true
+});
 
 function covidEstimator(req, res, next) {
   req.result = covid19ImpactEstimator(req.body);
@@ -23,11 +27,10 @@ function resAsJson(req, res) {
 function resAsXml(req, res) {
   res.type('text/xml');
 
-  const resultXml = xml(req.result);
-  return res.send(resultXml);
+  return res.send(serializer.render(req.result));
 }
 
-router.route('/logs').get(getLogs).post(getLogs);
+router.route('/logs').all(getLogs);
 
 // run this middleware for all /api/v1/on-covid-19 routes
 router.use(covidEstimator);
