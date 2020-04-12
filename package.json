@@ -6,8 +6,8 @@
   "private": false,
   "scripts": {
     "lint": "eslint ./src/",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "node ./server/app.js",
+    "dev": "nodemon ./server/app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
