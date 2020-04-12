@@ -34,5 +34,6 @@ router.use(covidEstimator);
 
 router.route('/json').get(resAsJson).post(resAsJson);
 router.route('/xml').get(resAsXml).post(resAsXml);
+router.route('').get(resAsJson).post(resAsJson);
 
 module.exports = router;

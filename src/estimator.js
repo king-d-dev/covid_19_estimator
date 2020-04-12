@@ -31,12 +31,15 @@ const impactEstimator = (data) => {
 
   // challenge 3
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
-  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  const casesForVentilatorsByRequestedTime = Math.trunc(
+    0.02 * infectionsByRequestedTime
+  );
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight = (infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD)
-    / data.timeToElapse;
+  let dollarsInFlight =
+    (infectionsByRequestedTime *
+      avgDailyIncomePopulation *
+      avgDailyIncomeInUSD) /
+    data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
@@ -72,12 +75,15 @@ const severeImpactEstimator = (data) => {
 
   // challenge 3
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
-  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  const casesForVentilatorsByRequestedTime = Math.truc(
+    0.02 * infectionsByRequestedTime
+  );
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  let dollarsInFlight = (infectionsByRequestedTime
-      * avgDailyIncomePopulation
-      * avgDailyIncomeInUSD)
-    / data.timeToElapse;
+  let dollarsInFlight =
+    (infectionsByRequestedTime *
+      avgDailyIncomePopulation *
+      avgDailyIncomeInUSD) /
+    data.timeToElapse;
 
   dollarsInFlight = parseInt(dollarsInFlight, 10);
 
