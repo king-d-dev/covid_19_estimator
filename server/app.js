@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const logStream = fs.createWriteStream('./logs.log', { flags: 'a' });
 app.use(
-  logger(':method   :url    :status   :response-time ms', {
+  logger(':method\t\t:url\t\t:status\t\t:response-time ms', {
     stream: logStream
   })
 );
