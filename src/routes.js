@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const covid19ImpactEstimator = require('./estimator').default;
+const covid19ImpactEstimator = require('./estimator');
 
 function covidEstimator(req, res, next) {
   return next();
