@@ -27,11 +27,12 @@ const impactEstimator = (data) => {
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  const dollarsInFlight =
+  const dollarsInFlight = parseInt(
     (infectionsByRequestedTime *
       avgDailyIncomePopulation *
       avgDailyIncomeInUSD) /
-    data.timeToElapse;
+      data.timeToElapse
+  );
 
   return {
     currentlyInfected,
@@ -61,11 +62,12 @@ const severeImpactEstimator = (data) => {
   const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = data.region;
-  const dollarsInFlight =
+  const dollarsInFlight = parseInt(
     (infectionsByRequestedTime *
       avgDailyIncomePopulation *
       avgDailyIncomeInUSD) /
-    data.timeToElapse;
+      data.timeToElapse
+  );
 
   return {
     currentlyInfected,
