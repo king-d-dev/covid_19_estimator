@@ -22,8 +22,9 @@ function getLogs(req, res) {
 router.route('/logs').get(getLogs).post(getLogs);
 
 // run this middleware for all /api/v1/on-covid-19 routes
-router.route('').get(covidEstimator).post(covidEstimatorPOST);
+router.use(covidEstimator);
 
-router.route('/json').get(covidEstimator).post(covidEstimatorPOST);
+router.route('/json').get(covidEstimatorPOST).post(covidEstimatorPOST);
+router.route('/xml').get(covidEstimatorPOST).post(covidEstimatorPOST);
 
 module.exports = router;
