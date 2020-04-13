@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const fs = require('fs');
 const logger = require('morgan');
 const routes = require('./routes');
@@ -10,7 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 console.log(__dirname);
-const logStream = fs.createWriteStream('./logs.log', { flags: 'a' });
+const logStream = fs.createWriteStream(path.join(__dirname, './logs.log'), {
+  flags: 'a'
+});
 app.use(
   logger(':method\t\t:url\t\t:status\t\t:response-time ms', {
     stream: logStream

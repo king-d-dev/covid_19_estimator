@@ -12,7 +12,8 @@
   },
   "engines": {
     "node": "10.15.1",
-    "npm": "6.4.1"
+    "npm": "6.4.1",
+    "yarn": "1.17.3"
   },
   "dependencies": {
     "easyxml": "^2.0.1",

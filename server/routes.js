@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const EasyXml = require('easyxml');
 
@@ -15,7 +16,7 @@ function covidEstimator(req, res, next) {
 }
 
 function getLogs(req, res) {
-  fs.readFile('./logs.log', (error, data) => {
+  fs.readFile(path.join(__dirname, './logs.log'), (error, data) => {
     return res.send(data);
   });
 }
