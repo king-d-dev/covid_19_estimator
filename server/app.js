@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-console.log(__dirname);
 const logStream = fs.createWriteStream(path.join(__dirname, './logs.log'), {
   flags: 'a'
 });

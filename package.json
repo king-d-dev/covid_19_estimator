@@ -5,15 +5,15 @@
   "license": "MIT",
   "private": false,
   "main": "./server/app.js",
-  "scripts": {
-    "lint": "eslint ./src/",
-    "start": "node ./server/app.js",
-    "dev": "nodemon ./server/app.js"
-  },
   "engines": {
     "node": "10.15.1",
     "npm": "6.4.1",
     "yarn": "1.17.3"
+  },
+  "scripts": {
+    "lint": "eslint ./src/",
+    "start": "node ./server/app.js",
+    "dev": "nodemon ./server/app.js"
   },
   "dependencies": {
     "easyxml": "^2.0.1",
