@@ -10,9 +10,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const logStream = fs.createWriteStream(path.join(__dirname, './logs.log'), {
-  flags: 'a'
-});
+const logStream = fs.createWriteStream(
+  path.join(__dirname, '..', './logs.log'),
+  {
+    flags: 'a'
+  }
+);
 app.use(
   logger(':method\t\t:url\t\t:status\t\t:response-time ms', {
     stream: logStream

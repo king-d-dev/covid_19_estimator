@@ -16,7 +16,7 @@ function covidEstimator(req, res, next) {
 }
 
 function getLogs(req, res) {
-  fs.readFile(path.join(__dirname, './logs.log'), (error, data) => {
+  fs.readFile(path.join(__dirname, '..', './logs.log'), (error, data) => {
     return res.send(data);
   });
 }
@@ -26,7 +26,7 @@ function resAsJson(req, res) {
 }
 
 function resAsXml(req, res) {
-  res.type('text/xml');
+  res.type('application/xml');
 
   return res.send(serializer.render(req.result));
 }
@@ -37,7 +37,7 @@ router.route('/logs').all(getLogs);
 router.use(covidEstimator);
 
 router.route('/json').get(resAsJson).post(resAsJson);
-router.route('/xml').get(resAsXml).post(resAsXml);
+router.route('/xml').all(resAsXml);
 router.route('').get(resAsJson).post(resAsJson);
 
 module.exports = router;
