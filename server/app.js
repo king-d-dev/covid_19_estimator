@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+console.log(__dirname);
 const logStream = fs.createWriteStream('./logs.log', { flags: 'a' });
 app.use(
   logger(':method\t\t:url\t\t:status\t\t:response-time ms', {

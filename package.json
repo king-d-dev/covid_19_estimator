@@ -10,6 +10,10 @@
     "start": "node ./server/app.js",
     "dev": "nodemon ./server/app.js"
   },
+  "engines": {
+    "node": "10.15.1",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "easyxml": "^2.0.1",
     "express": "^4.17.1",
