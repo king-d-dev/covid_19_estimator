@@ -17,7 +17,7 @@ const logStream = fs.createWriteStream(
   }
 );
 app.use(
-  logger(':method\t\t:url\t\t:status\t\t:response-time ms', {
+  logger(':method\t\t:url\t\t:status\t\t:response-time', {
     stream: {
       write(logString) {
         const lastTabIndex = logString.lastIndexOf('\t');
@@ -25,7 +25,9 @@ app.use(
         time = Math.ceil(time);
         time = time < 10 ? `0${time}` : time;
 
-        logStream.write(`${logString.substring(0, lastTabIndex + 1)}${time}ms`);
+        logStream.write(
+          `${logString.substring(0, lastTabIndex + 1)}${time}ms\n`
+        );
       }
     }
   })
