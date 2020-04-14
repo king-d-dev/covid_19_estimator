@@ -17,7 +17,8 @@ function covidEstimator(req, res, next) {
 
 function getLogs(req, res) {
   fs.readFile(path.join(__dirname, '..', './logs.log'), (error, data) => {
-    return res.send(data);
+    res.type('text/plain');
+    return res.send(data.toString());
   });
 }
 
@@ -33,11 +34,12 @@ function resAsXml(req, res) {
 
 router.route('/logs').all(getLogs);
 
-// run this middleware for all /api/v1/on-covid-19 routes
+// run this middleware for all /api/v1/on-covid-19 routes except /logs since
+// it this appears after that route handler
 router.use(covidEstimator);
 
 router.route('/json').get(resAsJson).post(resAsJson);
-router.route('/xml').all(resAsXml);
+router.route('/xml').get(resAsXml).post(resAsXml);
 router.route('').get(resAsJson).post(resAsJson);
 
 module.exports = router;

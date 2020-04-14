@@ -1,7 +1,7 @@
-const express = require('express');
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const express = require('express');
 const logger = require('morgan');
 const routes = require('./routes');
 
@@ -17,8 +17,19 @@ const logStream = fs.createWriteStream(
   }
 );
 app.use(
-  logger(':method\t\t:url\t\t:status\t\t:response-time ms', {
-    stream: logStream
+  logger(':method\t:url\t:status\t:response-time', {
+    stream: {
+      write(logString) {
+        const lastTabIndex = logString.lastIndexOf('\t');
+        let time = logString.substring(lastTabIndex + 1);
+        time = Math.ceil(parseFloat(time));
+        time = time < 10 ? `0${time.toString()}` : time.toString();
+
+        logStream.write(
+          `${logString.substring(0, lastTabIndex + 1)}${time}ms\n`
+        );
+      }
+    }
   })
 );
 
