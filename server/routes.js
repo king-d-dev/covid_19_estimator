@@ -17,7 +17,8 @@ function covidEstimator(req, res, next) {
 
 function getLogs(req, res) {
   fs.readFile(path.join(__dirname, '..', './logs.log'), (error, data) => {
-    return res.send(data);
+    res.type('text/plain');
+    return res.send(data.toString());
   });
 }
 

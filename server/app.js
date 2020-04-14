@@ -19,19 +19,15 @@ const logStream = fs.createWriteStream(
 app.use(
   logger(':method\t:url\t:status\t:response-time', {
     stream: {
-      write(string) {
-        const finalIndex = string.length - 1;
-        const lastTabIndex = string.lastIndexOf('\t');
-        const str = string.substring(lastTabIndex + 1, finalIndex);
-        let time = Math.ceil(parseFloat(str));
-        if (time < 10) {
-          time = `0${time.toString()}`;
-        } else {
-          time = time.toString();
-        }
+      write(logString) {
+        const lastTabIndex = logString.lastIndexOf('\t');
+        let time = logString.substring(lastTabIndex + 1);
+        time = Math.ceil(parseFloat(time));
+        time = time < 10 ? `0${time.toString()}` : time.toString();
 
-        const msg = `${string.substring(0, lastTabIndex + 1)}${time}ms\n`;
-        logStream.write(msg);
+        logStream.write(
+          `${logString.substring(0, lastTabIndex + 1)}${time}ms\n`
+        );
       }
     }
   })
