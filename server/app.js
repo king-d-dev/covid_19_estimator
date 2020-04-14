@@ -22,8 +22,8 @@ app.use(
       write(logString) {
         const lastTabIndex = logString.lastIndexOf('\t');
         let time = logString.substring(lastTabIndex + 1);
-        time = Math.ceil(time);
-        time = time < 10 ? `0${time}` : time;
+        time = Math.ceil(parseFloat(time));
+        time = time < 10 ? `0${time.toString()}` : time.toString();
 
         logStream.write(
           `${logString.substring(0, lastTabIndex + 1)}${time}ms\n`
